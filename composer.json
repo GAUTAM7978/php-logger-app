@@ -1,0 +1,6 @@
+{
+    "name": "root/php-logger-app",
+    "require": {
+        "monolog/monolog": "^3.9"
+    }
+}
