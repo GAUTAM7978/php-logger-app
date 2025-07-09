@@ -1,20 +1,32 @@
 pipeline {
-    agent {
-        docker {
-            image 'php:8.2-cli'
-            args '-v $PWD:/app -w /app'
-        }
-    }
+    agent any
+
     stages {
-        stage('Install') {
+        stage('Checkout') {
             steps {
-                sh 'curl -sS https://getcomposer.org/installer | php && php composer.phar install'
+                git branch: 'add-logger',
+                    url: 'https://github.com/YOUR_USERNAME/php-mini-app.git'
             }
         }
-        stage('Run App') {
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'php -v'
+                sh 'composer install'
+            }
+        }
+
+        stage('Run PHP App') {
             steps {
                 sh 'php index.php'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution completed.'
+            archiveArtifacts artifacts: 'app.log', fingerprint: true
         }
     }
 }
