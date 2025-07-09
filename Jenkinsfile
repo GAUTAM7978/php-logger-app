@@ -5,13 +5,13 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'add-logger',
-                    url: 'https://github.com/YOUR_USERNAME/php-mini-app.git'
+                    credentialsId: 'github-token',  // Gautam_01
+                    url: 'https://github.com/GAUTAM7978/php-logger-app.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'php -v'
                 sh 'composer install'
             }
         }
