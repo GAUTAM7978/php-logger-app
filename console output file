@@ -1,0 +1,85 @@
+Started by user Gautam Barik
+Obtained Jenkinsfile from git https://github.com/GAUTAM7978/php-logger-app.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/php-logger-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/php-logger-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/GAUTAM7978/php-logger-app.git # timeout=10
+Fetching upstream changes from https://github.com/GAUTAM7978/php-logger-app.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/GAUTAM7978/php-logger-app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/add-logger^{commit} # timeout=10
+Checking out Revision 7d70f38160b9efd35e196337a485e87c6f92454d (refs/remotes/origin/add-logger)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7d70f38160b9efd35e196337a485e87c6f92454d # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 60cf481b6589b6b61d0f7605aaa777df0e2f00ae # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/php-logger-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/GAUTAM7978/php-logger-app.git # timeout=10
+Fetching upstream changes from https://github.com/GAUTAM7978/php-logger-app.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/GAUTAM7978/php-logger-app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/add-logger^{commit} # timeout=10
+Checking out Revision 7d70f38160b9efd35e196337a485e87c6f92454d (refs/remotes/origin/add-logger)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7d70f38160b9efd35e196337a485e87c6f92454d # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b add-logger 7d70f38160b9efd35e196337a485e87c6f92454d # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] sh
++ composer install
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Nothing to install, update or remove
+Generating autoload files
+1 package you are using is looking for funding.
+Use the `composer fund` command to find out more!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run PHP App)
+[Pipeline] sh
++ php index.php
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline execution completed.
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
